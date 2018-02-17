@@ -1,0 +1,26 @@
+for (int i = 0; i < 5; ++i)
+{
+	printf("%d\n",i );
+}
+使用gcc编译代码报错
+error: 'for' loop initial declarations are only allowed in C99 mode
+note: use option -std=c99 or -std=gnu99 to compile your code
+错误，这是因为在gcc中直接在for循环中初始化了增量：
+for(int i=0; i<len; i++) {}
+这语法在gcc中是错误的，必须先先定义i变量：
+int i;  
+for(i=0;i<len;i++){}
+这是因为gcc基于c89标准，换成C99标准就可以在for循环内定义i变量了：
+gcc src.c -std=c99 -o src
+
+printf函数，printf("%s",point);
+指定字符串的开始地址为point，函数向后逐字节寻找值为0的字节，找到后把之间的字节按字符解释并输出。
+
+for (int i = 1; i < count; ++i)//这种定义方法是不正确的
+{
+	GtkLabel*addresslabel=gtk_label_new("数组元素的地址是");
+	gtk_widget_show(addresslabel);
+	gtk_grid_attach(grid,addresslabel,0,2,1,1);
+}
+在C语言中，不能通过循环语句来定义多个变量。
+因为C语言规定，变量的定义必须放在执行语句的前面，而循环语句就是一条执行语句，所以不能再循环体中定义变量。
